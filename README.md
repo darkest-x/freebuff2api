@@ -36,8 +36,6 @@ FREEBUFF_LOG_COLOR=true
 - `minimax/minimax-m2.7`
 - `z-ai/glm-5.1`
 
-请求链路按 HAR 对齐：换取 Freebuff session、广告 impression、agent validate、父 run、`context-pruner` 子 run、上游 chat stream、run step/finish 回写。
-
 调试空返回或上游异常时：
 
 ```dotenv
