@@ -1,0 +1,19 @@
+[project]
+name = "freebuff2api"
+version = "0.1.0"
+description = "OpenAI-compatible API adapter for Codebuff Freebuff"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.0",
+    "httpx>=0.28.0",
+    "python-dotenv>=1.0.0",
+    "uvicorn[standard]>=0.34.0",
+]
+
+[project.scripts]
+freebuff2api = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
