@@ -28,7 +28,7 @@ jobs:
           docker run --rm --platform ${{ matrix.platform }} \
             -v ${{ github.workspace }}:/workspace \
             -w /workspace \
-            python:3.13-slim \
+            python:3.13-slim-bullseye \
             bash -c "
               apt-get update && \
               apt-get install -y --no-install-recommends \
@@ -54,6 +54,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     permissions:
       contents: write
     steps:
