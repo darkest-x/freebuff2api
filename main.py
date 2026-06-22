@@ -1,3 +1,4 @@
+from freebuff2api.app import app
 import uvicorn
 
 from freebuff2api.config import load_settings
