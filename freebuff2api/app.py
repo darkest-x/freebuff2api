@@ -94,7 +94,6 @@ def _error_response(error: Exception) -> JSONResponse:
 
 @app.get("/healthz")
 async def healthz(request: Request) -> dict[str, Any]:
-    _check_local_auth(request)
     return {"status": "ok"}
 
 
