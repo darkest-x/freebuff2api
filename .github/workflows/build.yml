@@ -12,11 +12,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - arch: arm
-            platform: linux/arm/v7
+          - platform: linux/arm/v7
             suffix: armv7l
-          - arch: arm64
-            platform: linux/arm64
+          - platform: linux/arm64
             suffix: arm64
     steps:
       - uses: actions/checkout@v4
@@ -33,11 +31,11 @@ jobs:
             python:3.13-slim \
             bash -c "
               apt-get update && apt-get install -y binutils &&
-              pip install uv pyinstaller &&
-              uv sync --frozen --no-dev &&
+              pip install fastapi 'httpx[socks]' python-dotenv 'uvicorn[standard]' pyinstaller &&
               pyinstaller --onefile \
                 --name freebuff2api-${{ matrix.suffix }} \
-                --add-data 'freebuff2api:freebuff2api' \
+                --paths . \
+                --hidden-import freebuff2api \
                 main.py
             "
 
