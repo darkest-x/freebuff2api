@@ -30,8 +30,15 @@ jobs:
             -w /workspace \
             python:3.13-slim \
             bash -c "
-              apt-get update && apt-get install -y binutils &&
-              pip install fastapi 'httpx[socks]' python-dotenv 'uvicorn[standard]' pyinstaller &&
+              apt-get update && \
+              apt-get install -y --no-install-recommends \
+                build-essential \
+                python3-dev \
+                ca-certificates \
+                binutils \
+                && rm -rf /var/lib/apt/lists/* && \
+              pip install --upgrade pip && \
+              pip install fastapi 'httpx[socks]' python-dotenv 'uvicorn[standard]' pyinstaller && \
               pyinstaller --onefile \
                 --name freebuff2api-${{ matrix.suffix }} \
                 --paths . \
